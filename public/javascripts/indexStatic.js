@@ -759,10 +759,11 @@ $("#searchingForOpponentModal").on("hidden.bs.modal", function () {
 $(document).ready(function() {
   if($("#login").length) { // => Login page was loaded
   	if($("#login-form-email").val().trim()!=""){
-  		$("#login-form-email").focus();
-  		$("#login-form-password").focus();
-  		$("#login-form-email").blur();
-  		$("#login-form-password").blur();  		
+  		console.log("ssfdfdf");
+  		$("#login #login-form-email").focus();
+  		$("#login #login-form-password").focus();
+  		$("#login #login-form-email").blur();
+  		$("#login #login-form-password").blur();  		
   	}
   }
 });
