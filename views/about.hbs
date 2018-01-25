@@ -1,0 +1,211 @@
+<div id="about">
+	<div class="container">
+    <div class="row">
+
+      <div class="col-sm-10 col-sm-offset-1">
+        <ul class="nav nav-tabs nav-justified" role="tablist">
+          <li role="presentation" class="active"><a href="#aboutGameRules" aria-controls="Game Rules" role="tab" data-toggle="tab">Game Rules</a></li>
+          <li role="presentation"><a href="#aboutTournaments" aria-controls="Tournaments" role="tab" data-toggle="tab"><i class="fa fa-trophy" aria-hidden="true"></i>Tournaments</a></li>
+          <li role="presentation"><a href="#aboutReviews" aria-controls="Reviews" role="tab" data-toggle="tab"><i class="fa fa-star"></i>Reviews</a></li>
+          <li role="presentation"><a href="#aboutContactUs" aria-controls="Contact Us" role="tab" data-toggle="tab">Contact Us</a></li>
+        </ul>
+
+        <div class="tab-content">
+
+          <div role="tabpanel" class="tab-pane fade in active" id="aboutGameRules">
+            <h2>Game Rules</h2>
+            <hr>
+						<p>You know the drill - Rock crushes Scissors, Scissors cut Paper, Paper covers Rock.</p>
+          </div>
+
+          <div role="tabpanel" class="tab-pane fade" id="aboutTournaments">
+            <h2>Tournaments</h2>
+            <hr>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer hendrerit dui vitae leo efficitur, et rutrum nisi fermentum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.
+            </p>
+          </div>
+
+          <div role="tabpanel" class="tab-pane fade" id="aboutReviews">
+            <h2>Reviews</h2>
+            <hr>
+				    <div class="row" id="ratingSection">
+			        <div class="col-xs-12 col-md-10 col-md-offset-1">
+		            <div class="well rating-card">
+	                <div class="row">
+                    <div class="col-xs-12 col-md-6 text-center rating-general-info">
+                      <h3 class="rating-average-number">3.6</h3>
+                      <div class="rating-average-stars">
+                        <input id="ratingStarsAverage" value="3.6" />
+                      </div>
+                      <div class="rating-total-users">
+                        <i class="fa fa-users" aria-hidden="true"></i> <span>1,050,008</span> total
+                      </div>
+                    </div> {{!-- end of .rating-general-info --}}
+                    <div class="col-xs-12 col-sm-11 col-md-6 rating-bars">
+                      <div class="row">
+                        <div class="col-xs-3 text-right rating-bar-label">
+                          <i class="fa fa-star" aria-hidden="true"></i> 5
+                        </div>
+                        <div class="col-xs-9">
+                          <div class="progress progress-striped">
+                            <div class="progress-bar caption5-color" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                              <span class="progress-bar-value">100%</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-3 text-right rating-bar-label">
+                          <i class="fa fa-star" aria-hidden="true"></i> 4
+                        </div>
+                        <div class="col-xs-9">
+                          <div class="progress progress-striped">
+                              <div class="progress-bar caption4-color" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                <span class="progress-bar-value">60%</span>
+                              </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-3 text-right rating-bar-label">
+                          <i class="fa fa-star" aria-hidden="true"></i> 3
+                        </div>
+                        <div class="col-xs-9">
+                          <div class="progress progress-striped">
+	                          <div class="progress-bar caption3-color" role="progressbar" aria-valuenow="80"aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+	                            <span class="progress-bar-value">80%</span>
+	                          </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-3 text-right rating-bar-label">
+                          <i class="fa fa-star" aria-hidden="true"></i> 2
+                        </div>
+                        <div class="col-xs-9">
+                          <div class="progress progress-striped">
+	                          <div class="progress-bar caption2-color" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+	                            <span class="progress-bar-value">20%</span>
+	                          </div>
+                          </div>
+                        </div>
+                        <div class="col-xs-3 text-right rating-bar-label">
+                          <i class="fa fa-star" aria-hidden="true"></i> 1
+                        </div>
+                        <div class="col-xs-9">
+                          <div class="progress progress-striped">
+	                          <div class="progress-bar caption1-color" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%">
+	                            <span class="progress-bar-value">30%</span>
+	                          </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div> {{!-- end of .rating-bars --}}
+	                </div>
+		            </div> {{!-- end of rating-card --}}
+		            <button class="btn btn-default btn-block" id="reviewUsButton">Please Review Us!</button>
+								<form action="/add-review" method="post" id="reviewUsForm">
+									<div class="form-group" id="reviewUsRatingContainer">
+										<input id="ratingStarsInput" />
+										<div class="reviewUsErrorMessage">Rating is Required.</div>	
+									</div>
+									<div class="form-group" id="reviewUsTextareaContainer">
+										<textarea class="form-control" rows="3" placeholder="Leave a Review (Optional)" id="reviewUsTextarea"></textarea>
+										<div class="reviewUsErrorMessage">You have exceeded the limit of 5000 characters.</div>	
+									</div>	
+																	
+									{{!-- <input type="hidden" name="_csrf" value="{{csrfToken}}"> --}}
+									<button type="submit" class="btn btn-primary" id="reviewUsSubmitButton">Submit</button>			
+									<button type="button" class="btn btn-danger" id="cancelReview">Cancel</button>	
+								</form>		
+				        <div id="reviewsList">
+				          <!-- First Review -->
+				          <div class="row review-container">
+				            <div class="col-sm-2 col-xs-3">
+											<img class="review-avatar" src="/images/users/warrior.jpg" alt="Reviewer's Avatar" />
+				            </div>
+				            <div class="col-sm-10 col-xs-9 review-content-container">
+				            	<span class="review-username">The Spartan</span>
+				            	<input class="ratingStarsReview" value="4" /><span class="review-date">September 30, 2017</span>
+				            	<p class="review-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer hendrerit dui vitae leo efficitur, et rutrum nisi fermentum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.</p>
+				            </div>
+				          </div>					        
+				          <!-- Second Review -->
+				          <div class="row review-container">
+				            <div class="col-sm-2 col-xs-3">
+											<img class="review-avatar" src="/images/users/android.png" alt="Reviewer's Avatar" />
+				            </div>
+				            <div class="col-sm-10 col-xs-9 review-content-container">
+				            	<span class="review-username">Randomizer</span>
+				            	<input class="ratingStarsReview" value="2" /><span class="review-date">January 7, 2017</span>
+				            	<p class="review-content">Lorem ipsum dolor...</p>
+				            </div>
+				          </div>	
+				          <!-- Reply Example -->
+				          <div class="row review-reply-container">
+				            <div class="col-sm-10 col-sm-offset-2 col-xs-9 col-xs-offset-3">
+				            	<div class="review-reply">
+				            		<span class="review-reply-username">RPS Fights Team</span><span class="review-reply-date">January 8, 2017</span>
+												<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer hendrerit dui vitae leo efficitur, et rutrum nisi fermentum.</div>
+											</div>
+				            </div>				          	
+				          </div>
+				          <!-- Third Review -->
+				          <div class="row review-container">
+				            <div class="col-sm-2 col-xs-3">
+											<img class="review-avatar" src="/images/users/Harry Teo.jpg" alt="Reviewer's Avatar" />
+				            </div>
+				            <div class="col-sm-10 col-xs-9 review-content-container">
+				            	<span class="review-username">Harry Teo</span>
+				            	<input class="ratingStarsReview" value="5" /><span class="review-date">December 29, 2016</span>
+				            	<p class="review-content">Vestibulum ante ipsum primis. Vestibulum ante ipsum primis!!</p>
+				            </div>
+				          </div>						          			        
+				          <!-- Fourth Review -->
+				          <div class="row review-container">
+				            <div class="col-sm-2 col-xs-3">
+											<img class="review-avatar" src="/images/users/robot.jpg" alt="Reviewer's Avatar" />
+				            </div>
+				            <div class="col-sm-10 col-xs-9 review-content-container">
+				            	<span class="review-username">Robo</span>
+				            	<input class="ratingStarsReview" value="4" /><span class="review-date">August 15, 2016</span>
+				            	<p class="review-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer hendrerit dui vitae leo efficitur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer hendrerit dui vitae leo efficitur, et rutrum nisi fermentum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer hendrerit dui vitae leo efficitur, et rutrum nisi fermentum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.</p>
+				            </div>
+				          </div>				          			          			          
+				        </div> {{!-- end of #reviewsList --}}					            
+			        </div>
+				    </div> {{!-- end of #ratingSection --}}
+          </div> {{!-- end of #aboutReviews --}}
+
+          <div role="tabpanel" class="tab-pane fade" id="aboutContactUs">
+            <h2>Contact Us</h2>
+            <hr>
+            <p>Feel free to contact us to provide some feedback, give us suggestions for new features, or to just say hello!</p>
+	          <form id="contactForm" method="post" action="#">
+	            <div class="row">
+	              <div class="col-md-6">
+	                <div class="form-group">
+                    <input type="text" name="contact-form-name" id="contact-form-name" class="form-input" autocomplete="off" />
+                    <label for="contact-form-name">Name</label>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="contact-form-email" id="contact-form-email" class="form-input" autocomplete="off" />
+                    <label for="contact-form-email">Email</label>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="contact-form-subject" id="contact-form-subject" class="form-input" autocomplete="off" />
+                    <label for="contact-form-subject">Subject</label>
+	                </div>
+	              </div>
+	              <div class="col-md-6">
+	                <div class="form-group">
+	                	<textarea name="contact-form-message" id="contact-form-message" class="form-input" required="required"></textarea>
+	                	<label for="contact-form-message">Message</label>
+	                </div>
+	              </div>
+	            </div>
+	            <button type="submit" id="contact-form-submit" class="form-btn">Send Message</button>
+	          </form>      
+          </div> {{!-- end of #aboutContactUs --}} 
+
+        </div> {{!-- end of .tab-content --}}
+      </div>
+
+    </div>
+	</div>
+</div>

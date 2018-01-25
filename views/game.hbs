@@ -1,0 +1,230 @@
+<div id="playground" data-game-id="{{gameId}}" data-game-category="{{game.category}}" data-is-game-closed="{{#if game.endedAt}}true{{else}}false{{/if}}">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-xs-12 game-closed-container">
+				{{#if game.endedAt}}
+					<div class="game-closed">Game Closed</div>
+				{{/if}}
+			</div>
+
+			{{#unless game.endedAt}}
+				<div class="col-xs-12 messages-container">
+					{{!-- <div class="messages-container-aux"><div class="message-general game-flow-message">Go!</div></div> --}}
+				</div>
+			{{/unless}}
+
+			<div class="col-sm-4 col-xs-6 player" data-player-id="{{playerId}}" data-is-active-player="{{#if activePlayerMode}}true{{else}}false{{/if}}">
+				<div class="row player-image-container text-center">
+					<div class="col-xs-12">
+					  <div class="player-lives">
+					  	{{#timesdif game.winningScore gameScoreArray.[2]}}
+					  		<i class="fa fa-heart active-life" aria-hidden="true"></i>
+					  	{{/timesdif}}
+					  	{{#times gameScoreArray.[2]}}
+					  		<i class="fa fa-heart inactive-life" aria-hidden="true"></i>
+					  	{{/times}}
+					  </div>
+						<div class="players-general-image-container {{#if game.category}}{{#unless game.endedAt}}timed-game-image-container{{/unless}}{{/if}}">
+					  	<img class="player-image {{#if game.category}}{{#unless game.endedAt}}timed-game-image-size{{/unless}}{{/if}}" src="{{playerProfilePictureUrl}}" alt="Player's Image" onerror="this.onerror=null;this.src='/images/users/user.png';" />
+						</div>
+					  <h2 class="player-username">{{#if activePlayerMode}}You{{else}}{{playerName}}{{/if}}</h2>
+					</div>
+				</div>
+				<div class="row player-game-container text-center">
+					<div class="col-xs-12">
+						<div class="player-choice-container">
+							<div class="win-msg-div">Win!</div>
+							<div class="tie-msg-div">Tie</div>
+							<img class="img-responsive player-choice player-choice-rock" src="/images/weapons/left-rock.jpg" alt="Player's Weapon" />
+							<img class="img-responsive player-choice player-choice-paper" src="/images/weapons/left-paper.jpg" alt="Player's Weapon" />
+							<img class="img-responsive player-choice player-choice-scissors" src="/images/weapons/left-scissors.jpg" alt="Player's Weapon" />
+						</div>
+					</div>
+				</div>			
+			</div>
+
+			<div class="col-sm-4 game-stats text-center">
+				<span class="vs-span {{#if game.endedAt}}zero-opacity{{/if}}">VS.</span>
+				<div class="game-score">
+					<div class="game-score-field" id="player-wins">
+						<p class="hidden-xs">Wins</p>
+						<p class="score-counter"><span class="score-counter-span">{{gameScoreArray.[0]}}</span><span class="hidden-xs">/<span class="score-required-span">{{game.winningScore}}</span></span></p>
+					</div>
+					<div class="game-score-field hidden-xs" id="ties">
+						<p>Ties</p>
+						<p class="score-counter">{{gameScoreArray.[1]}}</p>
+					</div>
+					<span class="score-counter-complementary-span visible-xs">:</span>
+					<div class="game-score-field" id="enemy-wins">
+						<p class="hidden-xs">Wins</p>
+						<p class="score-counter"><span class="score-counter-span">{{gameScoreArray.[2]}}</span><span class="hidden-xs">/<span class="score-required-span">{{game.winningScore}}</span></span></p>
+					</div>
+				</div>
+				<div class="game-history hidden-xs">
+					<div class="game-history-current-round">Round <span>{{math gameHistoryArray.length "+" 1}}</span></div>
+					<div class="game-history-rounds-container">
+						{{#each gameHistoryArray}}
+							{{#if this.isWeapon1Winner}}
+								<div class="game-history-rounds-item">
+									<i class="fa {{#if this.weapon1}}fa-hand-{{this.weapon1}}-o{{else}}fa-minus{{/if}} fa-left fa-win" aria-hidden="true"></i><i class="fa fa-check fa-left" aria-hidden="true"></i><span>Round {{this.currentRound}}</span><i class="fa {{#if this.weapon2}}fa-hand-{{this.weapon2}}-o{{else}}fa-minus{{/if}} fa-right" aria-hidden="true"></i>
+								</div>	
+							{{else}}
+								{{#if this.isWeapon2Winner}}		
+									<div class="game-history-rounds-item">
+										<i class="fa {{#if this.weapon1}}fa-hand-{{this.weapon1}}-o{{else}}fa-minus{{/if}} fa-left" aria-hidden="true"></i><span>Round {{this.currentRound}}</span><i class="fa {{#if this.weapon2}}fa-hand-{{this.weapon2}}-o{{else}}fa-minus{{/if}} fa-right fa-win" aria-hidden="true"></i><i class="fa fa-check fa-right" aria-hidden="true"></i>
+									</div>
+								{{else}}
+									<div class="game-history-rounds-item">
+										<i class="fa {{#if this.weapon1}}fa-hand-{{this.weapon1}}-o{{else}}fa-minus{{/if}} fa-left" aria-hidden="true"></i><span>Round {{this.currentRound}}</span><i class="fa {{#if this.weapon2}}fa-hand-{{this.weapon2}}-o{{else}}fa-minus{{/if}} fa-right" aria-hidden="true"></i>
+									</div>
+								{{/if}}	
+							{{/if}}						
+						{{/each}}
+						{{!-- This part will be dynamically populated	 --}}
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-4 col-xs-6 enemy" data-enemy-id="{{enemyId}}">
+				<div class="row enemy-image-container text-center">
+					<div class="col-xs-12">
+					  <div class="enemy-lives">
+					  	{{#timesdif game.winningScore gameScoreArray.[0]}}
+					  		<i class="fa fa-heart active-life" aria-hidden="true"></i>
+					  	{{/timesdif}}
+					  	{{#times gameScoreArray.[0]}}
+					  		<i class="fa fa-heart inactive-life" aria-hidden="true"></i>
+					  	{{/times}}
+					  </div>						
+						<div class="players-general-image-container {{#if game.category}}{{#unless game.endedAt}}timed-game-image-container{{/unless}}{{/if}}">
+					  	<img class="enemy-image {{#if game.category}}{{#unless game.endedAt}}timed-game-image-size{{/unless}}{{/if}}" src="{{#if enemyProfilePictureUrl}}{{enemyProfilePictureUrl}}{{else}}/images/users/android.png{{/if}}" alt="Enemy's Image" onerror="this.onerror=null;this.src='/images/users/user.png';" />
+					  </div>
+					  <h2 class="enemy-username">{{#if enemyName}}{{enemyName}}{{else}}Randomizer{{/if}}</h2>					  
+					</div>
+				</div>
+				<div class="row enemy-game-container text-center">
+					<div class="col-xs-12">
+						<div class="enemy-choice-container">
+							<div class="win-msg-div">Win!</div>
+							<div class="tie-msg-div">Tie</div>
+							<img class="img-responsive enemy-choice enemy-choice-rock" src="/images/weapons/right-rock.jpg" alt="Enemy's Weapon" />
+							<img class="img-responsive enemy-choice enemy-choice-paper" src="/images/weapons/right-paper.jpg" alt="Enemy's Weapon" />
+							<img class="img-responsive enemy-choice enemy-choice-scissors" src="/images/weapons/right-scissors.jpg" alt="Enemy's Weapon" />
+						</div>				
+					</div>
+				</div>	
+			</div>
+			
+			<!-- Game Buttons -->
+
+			{{#unless game.endedAt}}
+				{{#if activePlayerMode}}
+					<div class="row text-center">
+						<div class="col-xs-12 col-sm-4 player-game-buttons-container">
+							<button class="btn btn-circle" id="rock" disabled="true">
+								<i class="fa fa-hand-rock-o" aria-hidden="true"></i>
+		            <span>Rock</span>
+		          </button>
+							<button class="btn btn-circle" id="paper" disabled="true">
+								<i class="fa fa-hand-paper-o" aria-hidden="true"></i>
+		            <span>Paper</span>
+		          </button>
+							<button class="btn btn-circle" id="scissors" disabled="true">
+								<i class="fa fa-hand-scissors-o" aria-hidden="true"></i>
+		            <span>Scissors</span>
+		          </button> 
+		          {{#if isLoggedIn}}<input type="hidden" name="_csrf" value="{{csrfToken}}">{{/if}}                   
+						</div>
+						{{#if isLoggedIn}}
+							{{#if game.category}}
+								<div class="col-xs-12 col-sm-4 interaction-buttons-container">
+									<button class="interaction-btn"><img class="interaction-btn-img" src="/images/emotions/happy_128.png" alt="Happy" /></button>		
+									<button class="interaction-btn"><img class="interaction-btn-img" src="/images/emotions/wink_128.png" alt="Wink" /></button>
+									<button class="interaction-btn"><img class="interaction-btn-img" src="/images/emotions/sleepy_128.png" alt="Sleepy" /></button>
+									{{!-- <button class="interaction-btn"><img class="interaction-btn-img" src="/images/emotions/laughing.png" alt="Laughing" /></button> --}}
+									{{!-- <button class="interaction-btn"><img class="interaction-btn-img" src="/images/emotions/cool.png" alt="Cool" /></button> --}}
+									<button class="interaction-btn"><img class="interaction-btn-img" src="/images/emotions/sad_128.png" alt="Sad" /></button>
+									<button class="interaction-btn"><img class="interaction-btn-img" src="/images/emotions/angry_128.png" alt="Angry" /></button></br>
+									<button class="interaction-btn"><img class="interaction-btn-img" src="/images/emotions/thumbs_up_128.png" alt="ThumbsUp" /></button>	
+									<button class="interaction-btn"><img class="interaction-btn-img" src="/images/emotions/magician_128.png" alt="Magician" /></button>
+									<button class="interaction-btn balloons"><img class="interaction-btn-img" src="/images/emotions/balloons_128.png" alt="Balloons" /></button>
+									<button class="interaction-btn"><img class="interaction-btn-img" src="/images/emotions/cheers_128.png" alt="Cheers" /></button>
+									<button class="interaction-btn"><img class="interaction-btn-img" src="/images/emotions/star_128.png" alt="Stars" /></button>
+								</div>
+								<div class="col-xs-12 interaction-chat-input-container">
+							    <div class="interaction-chat-input-wrapper input-group">
+							    	<span id="interaction-chat-input-char-counter">0/50</span>
+							      <input id="interaction-chat-input" class="form-control" type="text" placeholder="Chat Text..." autocomplete="off" maxlength=50 />
+							      <span class="input-group-btn">
+							        <button id="interaction-chat-input-send-btn" class="btn" type="button"><i class="fa fa-paper-plane animated" aria-hidden="true"></i></button>
+							      </span>
+							    </div>								  							
+								</div>
+							{{/if}}
+						{{/if}}
+					</div>
+				{{/if}}
+			{{/unless}}	
+
+		</div> 
+	</div>
+</div>
+
+<!-- Modals -->
+
+<div id="gameOverModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+      	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <p class="modal-title modal-title-win">You Win!</p>
+        <p class="modal-title modal-title-lose">You Lose...</p>
+        <img class="modal-img modal-img-win" src="/images/emotions/thumb-up-smiley.png" alt="Winner Image" />
+        <img class="modal-img modal-img-lose" src="/images/emotions/sad-emoticon.png" alt="Loser Image" />
+        <p class="message message-win">Great job, keep it up</p>
+        <p class="message message-lose">The battle you may have lost, but not over is the war</p>
+        {{#ifCond game.category "===" 1}}
+        	<button type="button" class="options-btn new-challenge-btn">New Game</button>
+        {{else}}
+        	{{#ifCond game.category "===" 2}}
+
+        	{{else}}
+						<button type="button" class="options-btn play-again-btn">Play Again</button>
+        	{{/ifCond}}
+        {{/ifCond}}
+        <button type="button" class="options-btn exit-game-btn">Exit</button>			        
+      </div>
+    </div>
+  </div>
+</div>
+
+{{#ifCond game.category "===" 1}}
+	<div id="searchingForOpponentModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-body">
+	      	<div class="titleContainer">
+	      		<p class="finding-opponent">Finding Opponent<span>.</span><span>.</span><span>.</span></p>
+	      		<p class="ready-set-go"></p>
+	      	</div>
+	      	<div class="loaderContainer">		
+					  <div></div>
+					  <div></div>
+					  <div></div>
+	      	</div>
+	      	<div class="imageContainer">
+	      		<img class="challenge-img" src="/images/swords.png">
+	      		<img class="opponent-img" src="">
+	      	</div>
+	      	<div class="opponent-info-container">
+	      		<h2 class="opponent-username"></h2>
+	      		<p class="opponent-fights"></p>
+	      		<p class="opponent-win-rate"></p>
+	      	</div>
+	      	<div class="cancelButtonContainer"><button type="button" data-dismiss="modal">Cancel</button></div>
+	      </div> 
+	    </div>
+	  </div>
+	</div>
+{{/ifCond}}

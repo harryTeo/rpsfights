@@ -1,0 +1,82 @@
+<div id="head-to-head">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+
+				  <div class="panel header-panel">
+				    <div class="panel-body">
+				    	<div class="header-panel-title-section">
+				    		<div class="row">
+									<div class="col-xs-offset-3 col-xs-5 col-sm-offset-3 col-sm-6 text-left">
+										<h2>Head to Head</h2>
+										<hr>
+										<p>Combat a random RPS fighter</p>
+									</div>
+									<div class="col-xs-4 col-sm-3 text-center">
+										<button id="random-fight-button">Challenge</button>
+									</div>									
+				    		</div>			    		
+				    	</div>
+							<div class="header-panel-auxiliary-section">
+				    		<div class="row">
+									<div class="col-xs-offset-3 col-xs-9 col-sm-offset-3 col-sm-9 text-left">
+										<div class="score-part">
+											<span class="score-part-counter">0</span>
+											<span class="score-part-label">TOTAL</span>
+										</div>			
+										<span class="space-span"></span>									
+										<div class="score-part">
+											<span class="score-part-counter">0</span>
+											<span class="score-part-label">WINS</span>
+										</div>
+										<span class="space-span"></span>
+										<div class="score-part">
+											<span class="score-part-counter">0</span>
+											<span class="score-part-label">LOSSES</span>
+										</div>						
+									</div>
+				    		</div>								
+							</div>
+							<div class="header-panel-icon">
+								<div>
+									<span class="diagonal-span"></span>
+									<i class="fa fa-user-o" aria-hidden="true"></i><span class="space-span"></span><i class="fa fa-user" aria-hidden="true"></i>
+								</div>
+							</div>
+				    </div>
+				  </div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modals -->
+
+<div id="searchingForOpponentModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+      	<div class="titleContainer">
+      		<p class="finding-opponent">Finding Opponent<span>.</span><span>.</span><span>.</span></p>
+      		<p class="ready-set-go"></p>
+      	</div>
+      	<div class="loaderContainer">		
+				  <div></div>
+				  <div></div>
+				  <div></div>
+      	</div>
+      	<div class="imageContainer">
+      		<img class="challenge-img" src="/images/swords.png">
+      		<img class="opponent-img" src="">
+      	</div>
+      	<div class="opponent-info-container">
+      		<h2 class="opponent-username"></h2>
+      		<p class="opponent-fights"></p>
+      		<p class="opponent-win-rate"></p>
+      	</div>
+      	<div class="cancelButtonContainer"><button type="button" data-dismiss="modal">Cancel</button></div>
+      </div> 
+    </div>
+  </div>
+</div>

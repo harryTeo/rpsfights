@@ -1,0 +1,139 @@
+<div id="homepage">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-offset-3 col-lg-6 col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 col-xs-12">
+
+				<a href="/against-the-machine">
+				  <div id="game-menu-human-vs-computer" class="panel game-menu">
+				    <div class="panel-body">
+				    	<div class="game-menu-title-section">
+				    		<div class="row">
+									<div class="col-xs-offset-4 col-xs-8 text-left">
+										<h2>Against the Machine</h2>
+										<hr>
+										<p>Try your luck against Mr. Randomizer</p>
+									</div>
+				    		</div>
+				    	</div>
+							<div class="game-menu-auxiliary-section">
+				    		<div class="row">
+									<div class="col-xs-offset-4 col-xs-8 text-left">
+										<div class="score-part">
+											<span class="score-part-counter">0</span>
+											<span class="score-part-label">TOTAL</span>
+										</div>			
+										<span class="space-span"></span>									
+										<div class="score-part">
+											<span class="score-part-counter">0</span>
+											<span class="score-part-label">WINS</span>
+										</div>
+										<span class="space-span"></span>
+										<div class="score-part">
+											<span class="score-part-counter">0</span>
+											<span class="score-part-label">LOSSES</span>
+										</div>									
+									</div>
+				    		</div>								
+							</div>
+							<div class="game-menu-icon">
+								<div>
+									<span class="diagonal-span"></span>
+									<i class="fa fa-user" aria-hidden="true"></i><span class="space-span"></span><i class="fa fa-laptop" aria-hidden="true"></i>
+								</div>
+							</div>
+				    </div>
+				  </div>
+			  </a>
+
+				<a href="{{#if isLoggedIn}}/head-to-head{{else}}#{{/if}}">
+				  <div id="game-menu-human-vs-human" class="panel game-menu">
+				    <div class="panel-body">
+				    	<div class="game-menu-title-section">
+				    		<div class="row">
+									<div class="col-xs-offset-4 col-xs-8 text-left">
+										<h2>Head to Head</h2>
+										<hr>
+										<p>Combat a random RPS fighter</p>
+									</div>
+				    		</div>			    		
+				    	</div>
+							<div class="game-menu-auxiliary-section">
+				    		<div class="row">
+									<div class="col-xs-offset-4 col-xs-8 text-left">
+										<div class="score-part">
+											<span class="score-part-counter">0</span>
+											<span class="score-part-label">TOTAL</span>
+										</div>			
+										<span class="space-span"></span>									
+										<div class="score-part">
+											<span class="score-part-counter">0</span>
+											<span class="score-part-label">WINS</span>
+										</div>
+										<span class="space-span"></span>
+										<div class="score-part">
+											<span class="score-part-counter">0</span>
+											<span class="score-part-label">LOSSES</span>
+										</div>										
+	{{!-- 									<span class="space-span"></span>
+										<div class="score-part">
+											<span class="score-part-counter">0</span>
+											<span class="score-part-label">XP</span>
+										</div>	 --}}								
+									</div>
+				    		</div>								
+							</div>
+							<div class="game-menu-icon">
+								<div>
+									<span class="diagonal-span"></span>
+									<i class="fa fa-user-o" aria-hidden="true"></i><span class="space-span"></span><i class="fa fa-user" aria-hidden="true"></i>
+								</div>
+							</div>
+				    </div>
+				  </div>
+				</a>
+
+				<a href="{{#if isLoggedIn}}/tournament/{{tournamentId}}{{else}}#{{/if}}">
+				  <div id="game-menu-tournament" class="panel game-menu">
+				    <div class="panel-body">
+				    	<div class="game-menu-title-section">
+				    		<div class="row">
+									<div class="col-xs-offset-4 col-xs-8 text-left">
+										<h2>Tournaments</h2>
+										<hr>
+										<p id="timeToNextTournament" data-tournament-start-time="{{tournamentStartTime}}" data-tournament-end-time="{{tournamentEndTime}}"></p>
+									</div>
+				    		</div>			    		
+				    	</div>
+							<div class="game-menu-auxiliary-section">
+				    		<div class="row">
+									<div class="col-xs-offset-4 col-xs-8 text-left">
+										<div class="score-part">
+											<span class="score-part-counter">0</span>
+											<span class="score-part-label">JOINED</span>
+										</div>			
+										<span class="space-span"></span>									
+										<div class="score-part">
+											<span class="score-part-counter">0</span>
+											<span class="score-part-label">WINS</span>
+										</div>
+										<span class="space-span"></span>
+										<div class="score-part">
+											<span class="score-part-counter">0</span>
+											<span class="score-part-label">XP</span>
+										</div>									
+									</div>
+				    		</div>								
+							</div>
+							<div class="game-menu-icon">
+								<div>
+									<i class="fa fa-trophy" aria-hidden="true"></i>
+								</div>
+							</div>
+				    </div>
+				  </div>
+				</a>
+
+			</div>
+		</div>
+	</div>
+</div>

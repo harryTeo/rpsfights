@@ -1,0 +1,52 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+		  <a class="navbar-brand" href="/">
+		  	<img src="/images/brand_image.png" alt="Brand Image" />
+		  	<span class="text-center">Home</span>
+		  </a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav navbar-right">      
+        {{#if isLoggedIn}}       
+		      <li class="nav-item">
+		        <a class="nav-link" href="/about">
+		        	<i class="fa fa-question-circle-o" aria-hidden="true"></i>
+					  	<span class="text-center">About</span>
+		        </a>
+		      </li>   		  
+		      <li class="nav-item">
+		        <a class="nav-link nav-link-profile" href="/profile/{{userId}}">
+		        	<img class="img-responsive nav-link-profile-img" src="{{userImageUrl}}" alt="Profile Picture" onerror="this.onerror=null;this.src='/images/users/user.png';" onload="this.style.opacity=1;">
+		        </a>
+		      </li>	 		           
+{{!-- 		      <li class="nav-item">
+		        <a class="nav-link" href="/profile/{{userId}}">
+		        	<i class="fa fa-user" aria-hidden="true"></i>
+					  	<span class="text-center">Profile</span>
+		        </a>
+		      </li>		 --}}	      	        	        
+{{!-- 		      <li class="nav-item">
+		        <a class="nav-link" href="/logout">
+					  	<i class="fa fa-sign-out" aria-hidden="true"></i>
+					  	<span class="text-center">Log Out</span>
+		        </a>
+		      </li>  --}}     	
+        {{else}}	        
+		      <li class="nav-item">
+		        <a class="nav-link" href="/about">
+		        	<i class="fa fa-question-circle-o" aria-hidden="true"></i>
+					  	<span class="text-center">About</span>
+		        </a>
+		      </li>          
+		      <li class="nav-item">
+		        <a class="nav-link" href="/login">
+					  	<i class="fa fa-sign-in" aria-hidden="true"></i>
+					  	<span class="text-center">Log In</span>
+		        </a>
+		      </li>	      
+        {{/if}}     
+      </ul>
+    </div>
+  </div>
+</nav>

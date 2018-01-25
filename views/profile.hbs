@@ -1,0 +1,84 @@
+<div id="profile">
+	<div class="container">
+
+		<div class="row" id="profile-image-section">
+			<div class="col-xs-12 text-center">
+					<div class="profile-image-container">
+						{{#ifCond profileOwnerId "===" userId}}
+							<button type="button" class="btn logout-profile" data-toggle="tooltip" data-placement="top" title="Log Out"><i class="fa fa-sign-out" aria-hidden="true"></i></button>
+							<button type="button" class="btn edit-profile" data-toggle="tooltip" data-placement="top" title="Edit Profile"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+						{{/ifCond}}
+					  <img class="img-responsive profile-image" src="{{profileOwnerImageUrl}}" alt="Profile Picture" onerror="this.onerror=null;this.src='/images/users/user.png';" onload="this.style.opacity=1;">
+					</div>
+					<h2 class="profile-username">{{profileOwnerName}}</h2>
+			</div>
+		</div>
+
+		<div id="profile-statistics-section">
+			<div class="row" id="profile-statistics-charts-section">
+		    <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0 col-md-5 col-md-offset-1 col-lg-4 col-lg-offset-1">	
+		    	<input type="hidden" id="totalGamesData" name="totalGamesData" value="{{gamesData.gamesArray}}">
+		    	<canvas id="totalGamesChart" width="400" height="360"></canvas>
+		    </div>
+		    <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0 col-md-5 col-lg-4 col-lg-offset-2">	
+		    	<input type="hidden" id="totalRoundsData" name="totalRoundsData" value="{{gamesData.roundsArray}}">
+		    	<canvas id="totalRoundsChart" width="400" height="360"></canvas>
+		    </div>		    
+		  </div>
+
+		</div> <!-- end of #profile-statistics-section -->
+
+	</div>
+</div>
+
+<!-- Modals -->
+{{#ifCond profileOwnerId "===" userId}}
+	<div id="editProfileModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h4 class="modal-title">Edit Profile</h4>
+	      </div>
+	      <div class="modal-body">
+	      	<div class="text-center">
+					  <img id="profile-image-preview" src="{{profileOwnerImageUrl}}" data-src="{{profileOwnerImageUrl}}" alt="Profile Picture Preview" onerror="this.onerror=null;this.src='/images/users/user.png';" />
+					  <h2 id="profile-username-preview" data-name="{{profileOwnerName}}">{{profileOwnerName}}</h2>		  
+				  </div>    
+				  <hr>
+		      <form id="editProfileForm" enctype="multipart/form-data" action="/editprofile" method="post">
+						<div class="form-group">    
+							<input type="file" class="form-control-file" id="profilePictureInputFile" name="profilePictureInputFile" onchange="previewImage();" />
+							<label for="profilePictureInputFile"><i class="fa fa-upload"></i><span class="file-name-span">Upload Profile Picture</span></label>	
+							<small id="fileHelp" class="form-text text-muted">Only JPG, JPEG, GIF and PNG files are allowed. Max size: 1MB</small>	
+						</div> 			      
+	          <div class="form-group form-group-username">
+							<input type="text" class="form-input" id="editProfileNameInput" name="editProfileNameInput" value="{{profileOwnerName}}" autocomplete="off" spellcheck="false" minlength=1 maxlength=50 />
+	            <label class="form-input-label active-label" for="editProfileNameInput">Username</label>
+	          </div>	        
+		        <div class="modal-buttons text-center">
+		        	<input type="hidden" name="_csrf" value="{{csrfToken}}">
+	            <button type="submit" class="btn btn-primary">Save</button>
+	            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+	          </div>
+		      </form>  					  		
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<div id="generalErrorModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-body">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h1><span class="glyphicon glyphicon-fire"></span></h1>      
+	        <p class="modal-title">ERROR</p>
+	        <p class="message">The action could not be completed.</p>
+	        <p class="subMessage">Keep trying and never give up <i class="fa fa-smile-o" aria-hidden="true"></i></p>
+	        {{!-- <p class="subMessage">Please try again in a while or feel free to <a href="/about">contact us</a> if the problem persists!</p> --}}
+	        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>	
+{{/ifCond}}
