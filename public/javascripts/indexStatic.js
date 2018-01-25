@@ -760,6 +760,7 @@ $(document).ready(function() {
   if($("#login").length) { // => Login page was loaded
   	if($("#login-form-email").val().trim()!=""){
   		$("#login-form-email").focus();
+  		$("#login-form-password").focus();
   	}
   }
 });
