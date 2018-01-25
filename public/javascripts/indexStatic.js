@@ -756,6 +756,14 @@ $("#searchingForOpponentModal").on("hidden.bs.modal", function () {
 // Log In Page
 */
 
+$(document).ready(function() {
+  if($("#login").length) { // => Login page was loaded
+  	if($("#login-form-email").val().trim()!=""){
+  		$("#login-form-email").focus();
+  	}
+  }
+});
+
 $('#login .tab a').on('click', function (e) {
 	e.preventDefault();
 	$(this).parent().addClass('active');
