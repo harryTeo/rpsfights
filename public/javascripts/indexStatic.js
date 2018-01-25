@@ -761,6 +761,8 @@ $(document).ready(function() {
   	if($("#login-form-email").val().trim()!=""){
   		$("#login-form-email").focus();
   		$("#login-form-password").focus();
+  		$("#login-form-email").blur();
+  		$("#login-form-password").blur();  		
   	}
   }
 });
