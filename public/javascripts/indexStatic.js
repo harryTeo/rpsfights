@@ -765,8 +765,6 @@ $('#login .tab a').on('click', function (e) {
 	$(target).fadeIn(600);
 });
 
-if($("#login .form-group .form-input").val().trim()!=""){$("#login .form-group .form-input").addClass("active-label");}
-
 $("#login .form-group .form-input").on("focus", function() {
 	$(this).siblings("label").addClass("active-label");
 	$(this).removeClass("has-error");
