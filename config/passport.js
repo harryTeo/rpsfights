@@ -67,8 +67,8 @@ passport.use("local.signin", new LocalStrategy({
 passport.use("facebook", new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
-    callbackURL: "http://localhost:8000/auth/facebook/callback",
-    // callbackURL: "https://rpsfights.herokuapp.com/auth/facebook/callback",
+    // callbackURL: "http://localhost:8000/auth/facebook/callback",
+    callbackURL: "https://rpsfights.herokuapp.com/auth/facebook/callback",
     profileFields: ['id', 'emails', 'name', 'displayName', 'gender', 'profileUrl', 'picture.type(large)']
   },
   function(accessToken, refreshToken, profile, done) {

@@ -1,6 +1,7 @@
 {
   "name": "rock-paper-scissors",
   "version": "0.0.0",
+  "description": "Rock-Paper-Scissors Multiplayer Game",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
