@@ -118,6 +118,14 @@ router.get("/tournament/:id", isLoggedIn, function(req, res, next) {
   });
 });
 
+router.get("/terms-conditions", function(req, res, next) {
+  res.render("terms-conditions", { websiteName: "RPS Fights", websiteURL: "https://rpsfights.herokuapp.com", country: "Cyprus" });
+});
+
+router.get("/privacy-policy", function(req, res, next) {
+  res.render("privacy-policy", { websiteName: "RPS Fights", websiteURL: "https://rpsfights.herokuapp.com", country: "Cyprus" });
+});
+
 router.get("/login", notLoggedIn, function(req, res, next) {
 	res.render("login", { csrfToken: req.csrfToken() });
 });

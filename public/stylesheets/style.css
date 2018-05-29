@@ -1854,6 +1854,35 @@ fieldset[disabled] .btn {
 	#login .form-group .form-input { margin-bottom: 15px; font-size: 14px; padding: 15px; padding-bottom: 16px; }	
 }
 
+/* Terms and Conditions Page */
+#terms-conditions {
+	min-height: 100vh;
+	padding-top: 85px;
+	font-size: 18px;
+}
+#terms-conditions p {
+	margin: 1.5em 0;
+}
+#terms-conditions h2 {
+	margin: 1em 0;
+}
+
+/* Privacy Policy Page */
+#privacy-policy {
+	min-height: 100vh;
+	padding-top: 85px;
+	font-size: 18px;
+}
+#privacy-policy p {
+	margin: 1.5em 0;
+}
+#privacy-policy h4 {
+	margin: 1.75em 0;
+}
+#privacy-policy h2 {
+	margin: 1em 0;
+}
+
 /* Profile Page */
 #profile {
 	min-height: 100vh;
