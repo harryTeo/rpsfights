@@ -21,7 +21,7 @@ var server = require('http').Server(app); // This is normally done in ./bin/www 
 global.io = require('socket.io')(server); //  Set up our websockets server to run in the same app. Set "io" as Global Variable, in order to be able to access socket.io from all files in our server
 
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGOLAB_URI, { useMongoClient: true });
+mongoose.connect(process.env.MONGOLAB_URI, { useNewUrlParser: true });
 
 require("./config/passport"); // Note: this should be placed after "mongoose.connect". We don't assign it to a var since we simply want to load the file and make it accessible to our app
 
